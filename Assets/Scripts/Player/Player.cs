@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Movement();
+        Attack();
         
     }
 
@@ -68,6 +69,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         _resetJump = false;
         StopCoroutine(JumpReset());
+    }
+
+    private void Attack()
+    {
+        if(Input.GetMouseButtonDown(0) && CheckGrounded())
+        {
+            _pAScript.TriggerAttack();
+        }
     }
 
 }

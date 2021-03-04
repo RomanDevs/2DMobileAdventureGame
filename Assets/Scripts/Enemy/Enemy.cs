@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     protected int health;
-    protected int speed;
+    protected float speed;
     protected int gems;
     [SerializeField] protected Transform PointA, PointB;
     protected Animator anim;

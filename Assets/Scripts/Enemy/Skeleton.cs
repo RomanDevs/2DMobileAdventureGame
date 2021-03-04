@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Skeleton : Enemy
 {
-    void Start()
+    protected override void Init()
     {
-        
-    }
-
-    protected override void Update()
-    {
-        
+        idleAnimationName = "SkeletonIdle";
+        speed = 0.5f;
+        base.Init();
     }
 }

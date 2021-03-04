@@ -4,19 +4,12 @@ using UnityEngine;
 
 public class Spider : Enemy
 {
-    void Start()
+    //use for initialization
+    protected override void Init()
     {
-        
+        idleAnimationName = "SpiderIdle";
+        speed = 1;
+        base.Init();
     }
 
-    protected override void Update()
-    {
-        
-    }
-
-    protected override void Attack()
-    {
-        base.Attack();
-        Debug.Log("Spider Attack");
-    }
 }

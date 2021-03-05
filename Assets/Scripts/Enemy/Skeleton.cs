@@ -21,7 +21,9 @@ public class Skeleton : Enemy, IDamagable
         anim.SetBool("InCombat", true);
         if(health < 1)
         {
-            Destroy(this.gameObject);
+            anim.SetTrigger("Death");
+            isDead = true;
+            Destroy(GetComponent<BoxCollider2D>());
         }
     }
 

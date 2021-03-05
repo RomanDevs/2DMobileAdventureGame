@@ -13,6 +13,7 @@ public abstract class Enemy : MonoBehaviour
     protected string idleAnimationName;
     protected bool onB;
     protected bool isHit;
+    protected bool isDead;
 
     protected Player player;
 
@@ -38,7 +39,8 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Update()
     {
-        Movement();
+        if (isDead == false)
+            Movement();
     }
 
     protected virtual void Movement()

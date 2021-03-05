@@ -37,6 +37,7 @@ public class Player : MonoBehaviour, IDamagable
     public void Damage()
     {
         Health--;
+        Debug.Log("Player Hit");
         if(Health < 1)
         {
             Debug.Log("Player Dead");

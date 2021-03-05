@@ -5,8 +5,9 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected int health;
+    [SerializeField] protected GameObject diamond;
     protected float speed;
-    protected int gems;
+    [SerializeField] protected int gems;
     [SerializeField] protected Transform PointA, PointB;
     protected Animator anim;
     protected SpriteRenderer sprite;

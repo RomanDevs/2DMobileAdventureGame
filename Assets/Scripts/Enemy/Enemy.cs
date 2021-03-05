@@ -78,6 +78,7 @@ public abstract class Enemy : MonoBehaviour
         if (isHit == true)
         {
             float distance = Vector2.Distance(transform.localPosition, player.transform.localPosition);
+
             if(player.transform.position.x > transform.position.x)
             {
                 sprite.flipX = false;
@@ -86,6 +87,7 @@ public abstract class Enemy : MonoBehaviour
             {
                 sprite.flipX = true;
             }
+
             if (distance > 3)
             {
                 anim.SetBool("InCombat", false);

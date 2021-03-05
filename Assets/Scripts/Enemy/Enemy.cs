@@ -88,7 +88,7 @@ public abstract class Enemy : MonoBehaviour
                 sprite.flipX = true;
             }
 
-            if (distance > 3)
+            if (distance > 4)
             {
                 anim.SetBool("InCombat", false);
                 isHit = false;

@@ -14,6 +14,7 @@ public class Skeleton : Enemy, IDamagable
     }
     public void Damage()
     {
+        Debug.Log("Skeleton::Damage()");
         health--;
         anim.SetTrigger("Hit");
         isHit = true;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamagable
 {
     private PlayerAnimation _pAScript;
     private Rigidbody2D _rb;
@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Vector2 _velocity;
     private float _jumpForce = 5;
     private bool _resetJump = false;
+    [SerializeField] public int Health { get; set; }
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -22,6 +23,8 @@ public class Player : MonoBehaviour
         {
             Debug.LogError("Player Animation Script is NULL");
         }
+        Debug.Log("Setting Health at 10 at Start");
+        Health = 10;
     }
 
     void Update()
@@ -29,6 +32,15 @@ public class Player : MonoBehaviour
         Movement();
         Attack();
         
+    }
+
+    public void Damage()
+    {
+        Health--;
+        if(Health < 1)
+        {
+            Debug.Log("Player Dead");
+        }
     }
 
     private void Movement()

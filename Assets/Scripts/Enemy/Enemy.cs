@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    protected int health;
+    [SerializeField] protected int health;
     protected float speed;
     protected int gems;
     [SerializeField] protected Transform PointA, PointB;
@@ -12,6 +12,9 @@ public abstract class Enemy : MonoBehaviour
     protected SpriteRenderer sprite;
     protected string idleAnimationName;
     protected bool onB;
+    protected bool isHit;
+
+    protected Player player;
 
 
     protected virtual void Start()
@@ -30,6 +33,7 @@ public abstract class Enemy : MonoBehaviour
         {
             Debug.LogError("Sprite Renderer in Enemy is NULL");
         }
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     protected virtual void Update()
@@ -43,7 +47,10 @@ public abstract class Enemy : MonoBehaviour
         {
             if (onB == false)
             {
-                transform.Translate(Vector2.right * speed * Time.deltaTime);
+                if (isHit == false)
+                {
+                    transform.Translate(Vector2.right * speed * Time.deltaTime);
+                }
                 sprite.flipX = false;
                 //transform.position = Vector2.MoveTowards(transform.position, PointB.position, speed * Time.deltaTime);
                 if (transform.position.x >= PointB.position.x)
@@ -54,7 +61,10 @@ public abstract class Enemy : MonoBehaviour
             }
             else if (onB == true)
             {
-                transform.Translate(Vector2.left * speed * Time.deltaTime);
+                if (isHit == false)
+                {
+                    transform.Translate(Vector2.left * speed * Time.deltaTime);
+                }
                 sprite.flipX = true;
                 //transform.position = Vector2.MoveTowards(transform.position, PointA.position, speed * Time.deltaTime);
                 if (transform.position.x <= PointA.position.x)
@@ -64,6 +74,25 @@ public abstract class Enemy : MonoBehaviour
                 }
             }
         }
+
+        if (isHit == true)
+        {
+            float distance = Vector2.Distance(transform.localPosition, player.transform.localPosition);
+            if(player.transform.position.x > transform.position.x)
+            {
+                sprite.flipX = false;
+            }
+            else if(player.transform.position.x < transform.position.x)
+            {
+                sprite.flipX = true;
+            }
+            if (distance > 3)
+            {
+                anim.SetBool("InCombat", false);
+                isHit = false;
+            }
+        }
+
     }
 
 }

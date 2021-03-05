@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, IDamagable
 {
+    private int _diamonds;
+
     private PlayerAnimation _pAScript;
     private Rigidbody2D _rb;
     private float _speed = 3f;
@@ -90,6 +92,12 @@ public class Player : MonoBehaviour, IDamagable
         {
             _pAScript.TriggerAttack();
         }
+    }
+
+    public void AddDiamonds(int diamonds)
+    {
+        _diamonds += diamonds;
+        Debug.Log(_diamonds);
     }
 
 }

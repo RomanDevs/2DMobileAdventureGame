@@ -24,6 +24,8 @@ public class Skeleton : Enemy, IDamagable
             anim.SetTrigger("Death");
             isDead = true;
             Destroy(GetComponent<BoxCollider2D>());
+            GameObject thisDiamond = Instantiate(diamond, transform.position, Quaternion.identity);
+            thisDiamond.GetComponent<Diamonds>().SetDiamonds(gems);
         }
     }
 

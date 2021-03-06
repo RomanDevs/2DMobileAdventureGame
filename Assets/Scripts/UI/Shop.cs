@@ -8,6 +8,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject _shopPanel;
     private Player _player;
     private int _playerGems;
+    private int _currentItem;
     private int _itemCost;
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -35,14 +36,17 @@ public class Shop : MonoBehaviour
         {
             case 0:
                 UIManager.Instance.ShopSelection(30);
+                _currentItem = 0;
                 _itemCost = 200;
                 break;
             case 1:
                 UIManager.Instance.ShopSelection(-90);
+                _currentItem = 1;
                 _itemCost = 400;
                 break;
             case 2:
                 UIManager.Instance.ShopSelection(-180);
+                _currentItem = 2;
                 _itemCost = 100;
                 break;
         }
@@ -52,12 +56,24 @@ public class Shop : MonoBehaviour
     {
         if(_playerGems >= _itemCost)
         {
+            switch(_currentItem)
+            {
+                case 0:
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    GameManager.Instance._hasKey = true;
+                    break;
+            }
             _player.AddDiamonds(-_itemCost);
             _playerGems = _player.GetDiamonds();
             UIManager.Instance.OpenShop(_playerGems);
+            _shopPanel.SetActive(false);
         }
         else
         {
+            Debug.Log("You don't have enough gems");
             _shopPanel.SetActive(false);
         }
     }

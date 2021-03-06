@@ -70,6 +70,12 @@ public class UIManager : MonoBehaviour
             case 3:
                 _healthUnits[3].gameObject.SetActive(false);
                 break;
+            case 4:
+                foreach(Image unit in _healthUnits)
+                {
+                    unit.gameObject.SetActive(true);
+                }
+                break;
             default:
                 break;
         }

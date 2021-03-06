@@ -39,11 +39,13 @@ public class Player : MonoBehaviour, IDamagable
     public void Damage()
     {
         Health--;
-        UIManager.Instance.UpdateLives(Health);
         if(Health < 1)
         {
             _pAScript.TriggerDeath();
+            Health = 4;
+            transform.position = new Vector2(0, 2);
         }
+        UIManager.Instance.UpdateLives(Health);
     }
 
     private void Movement()

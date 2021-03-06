@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Text _gemCount;
     [SerializeField] private Image _selectionImg;
+    [SerializeField] private Text _hUDGems;
+    [SerializeField] private Image[] _healthUnits;
 
     private void Awake()
     {
@@ -45,5 +47,31 @@ public class UIManager : MonoBehaviour
     public void ShopSelection(int yPos)
     {
         _selectionImg.rectTransform.anchoredPosition = new Vector2(_selectionImg.rectTransform.anchoredPosition.x, yPos);
+    }
+
+    public void UpdateHUD(int gems)
+    {
+        _hUDGems.text = gems.ToString();
+    }
+
+    public void UpdateLives(int lives)
+    {
+        switch(lives)
+        {
+            case 0:
+                _healthUnits[0].gameObject.SetActive(false);
+                break;
+            case 1:
+                _healthUnits[1].gameObject.SetActive(false);
+                break;
+            case 2:
+                _healthUnits[2].gameObject.SetActive(false);
+                break;
+            case 3:
+                _healthUnits[3].gameObject.SetActive(false);
+                break;
+            default:
+                break;
+        }
     }
 }

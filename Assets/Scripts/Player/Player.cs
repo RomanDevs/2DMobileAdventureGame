@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, IDamagable
             Debug.LogError("Player Animation Script is NULL");
         }
         Debug.Log("Setting Health at 10 at Start");
-        Health = 10;
+        Health = 4;
     }
 
     void Update()
@@ -39,10 +39,10 @@ public class Player : MonoBehaviour, IDamagable
     public void Damage()
     {
         Health--;
-        Debug.Log("Player Hit");
+        UIManager.Instance.UpdateLives(Health);
         if(Health < 1)
         {
-            Debug.Log("Player Dead");
+            _pAScript.TriggerDeath();
         }
     }
 
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour, IDamagable
     public void AddDiamonds(int diamonds)
     {
         _diamonds += diamonds;
-        Debug.Log(_diamonds);
+        UIManager.Instance.UpdateHUD(_diamonds);
     }
 
     public int GetDiamonds()

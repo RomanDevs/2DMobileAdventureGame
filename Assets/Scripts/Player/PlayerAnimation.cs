@@ -53,6 +53,11 @@ public class PlayerAnimation : MonoBehaviour
         _swordArcAnim.SetTrigger("SwordAnimation");
     }
 
+    public void TriggerDeath()
+    {
+        _anim.SetTrigger("Death");
+    }
+
     private void FaceDirection(float horizontal)
     {
             Vector3 sSPos = _swordArcSprite.transform.localPosition;

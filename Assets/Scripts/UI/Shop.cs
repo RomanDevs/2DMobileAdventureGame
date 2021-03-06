@@ -22,8 +22,21 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void SelectedItem()
+    public void SelectedItem(int buttonID)
     {
-        Debug.Log("Selected Item");
+        //ID: 0 = Flame Sword, 1 = Flight Boots, 2 = Castle Key
+        // 30, -70, -180
+        switch(buttonID)
+        {
+            case 0:
+                UIManager.Instance.ShopSelection(30);
+                break;
+            case 1:
+                UIManager.Instance.ShopSelection(-90);
+                break;
+            case 2:
+                UIManager.Instance.ShopSelection(-180);
+                break;
+        }
     }
 }

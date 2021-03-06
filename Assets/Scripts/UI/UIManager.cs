@@ -41,4 +41,9 @@ public class UIManager : MonoBehaviour
     {
         _gemCount.text = gemCount.ToString() + "G";
     }
+
+    public void ShopSelection(int yPos)
+    {
+        _selectionImg.rectTransform.anchoredPosition = new Vector2(_selectionImg.rectTransform.anchoredPosition.x, yPos);
+    }
 }

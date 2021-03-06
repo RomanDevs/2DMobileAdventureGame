@@ -26,7 +26,6 @@ public class Player : MonoBehaviour, IDamagable
         {
             Debug.LogError("Player Animation Script is NULL");
         }
-        Debug.Log("Setting Health at 10 at Start");
         Health = 4;
     }
 

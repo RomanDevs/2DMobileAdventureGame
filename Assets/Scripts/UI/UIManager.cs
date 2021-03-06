@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
     }
 
     [SerializeField] private Text _gemCount;
+    [SerializeField] private Image _selectionImg;
 
     private void Awake()
     {

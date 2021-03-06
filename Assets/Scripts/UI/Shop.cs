@@ -21,4 +21,9 @@ public class Shop : MonoBehaviour
             _shopPanel.SetActive(false);
         }
     }
+
+    public void SelectedItem()
+    {
+        Debug.Log("Selected Item");
+    }
 }

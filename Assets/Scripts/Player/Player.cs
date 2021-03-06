@@ -100,4 +100,9 @@ public class Player : MonoBehaviour, IDamagable
         Debug.Log(_diamonds);
     }
 
+    public int GetDiamonds()
+    {
+        return _diamonds;
+    }
+
 }

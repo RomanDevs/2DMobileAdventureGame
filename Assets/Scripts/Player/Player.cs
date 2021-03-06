@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Player : MonoBehaviour, IDamagable
 {
@@ -48,12 +49,12 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Movement()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
+        float horizontal = CrossPlatformInputManager.GetAxis("Horizontal"); //Input.GetAxisRaw("Horizontal");
         _pAScript.Move(horizontal);
         _velocity = new Vector2(horizontal * _speed, _rb.velocity.y);
         _pAScript.Jump(CheckGrounded());
 
-        if (Input.GetKeyDown(KeyCode.Space) && CheckGrounded() == true)
+        if (Input.GetKeyDown(KeyCode.Space) || CrossPlatformInputManager.GetButtonDown("BButton") && CheckGrounded() == true)
         {
             _velocity.y = _jumpForce;
             StartCoroutine(JumpReset());
@@ -88,7 +89,7 @@ public class Player : MonoBehaviour, IDamagable
 
     private void Attack()
     {
-        if(Input.GetMouseButtonDown(0) && CheckGrounded())
+        if(/*Input.GetMouseButtonDown(0)*/CrossPlatformInputManager.GetButtonDown("AButton") && CheckGrounded())
         {
             _pAScript.TriggerAttack();
         }
